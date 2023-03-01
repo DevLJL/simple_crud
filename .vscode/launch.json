@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "XDebug listening to Laradock",
+        "type": "php",
+        "request": "launch",
+        "port": 9003,
+        "pathMappings": {
+          "/var/www/study/abpapi": "${workspaceRoot}",
+        },
+        "ignore": [
+          "**/vendor/**/*.php"
+        ]
+      }
+    ]
+  }
