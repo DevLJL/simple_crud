@@ -20,8 +20,22 @@ class PersonProvider extends ServiceProvider
     // Instanciar repositório
     $type = RepositoryTypeEnum::from(env('DB_REPOSITORY', 'eloquent'));
     match ($type) {
-      RepositoryTypeEnum::ELOQUENT => $this->app->bind(PersonRepositoryInterface::class, fn () => new PersonRepositoryEloquent(new PersonModelEloquent())),
-      //RepositoryTypeEnum::MEMORY   => $this->app->bind(PersonRepositoryInterface::class, fn () => new PersonRepositoryMemory()),
+      RepositoryTypeEnum::ELOQUENT => $this->app->bind(
+        PersonRepositoryInterface::class, 
+        fn () => new PersonRepositoryEloquent(new PersonModelEloquent())
+      ),
+      //RepositoryTypeEnum::DOCTRINE   => $this->app->bind(
+      //  PersonRepositoryInterface::class, 
+      //  fn () => new PersonRepositoryDoctrine(new PersonEntityDoctrine())
+      //),
+      //RepositoryTypeEnum::PDO   => $this->app->bind(
+      //  PersonRepositoryInterface::class, 
+      //  fn () => new PersonRepositoryPDO()
+      //),
+      //RepositoryTypeEnum::MEMORY   => $this->app->bind(
+      //  PersonRepositoryInterface::class, 
+      //  fn () => new PersonRepositoryMemory()
+      //),
       //RepositoryTypeEnum::OTHER    => null,
     };
   }
